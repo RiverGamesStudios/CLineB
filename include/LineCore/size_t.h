@@ -15,4 +15,7 @@
 	typedef long unsigned int size_t;
 #endif
 
+/* Assuming ILP32 and LP64 for now, since ELF follows this(?) */
+typedef long int ssize_t;
+
 #endif

@@ -12,8 +12,11 @@
 #define _CLineB__NEEDS_RENAME
 #define _CLineB__NEEDS_MAKEDIR
 #define _CLineB__NEEDS_REMOVEDIR
-#define _CLineB__NEEDS_WRITE
 #define _CLineB__NEEDS_REMOVE
+#define _CLineB__NEEDS_FSIZE
+#define _CLineB__NEEDS_WRITE
+#define _CLineB__NEEDS_READ
+#define _CLineB__NEEDS_LISTDIR
 #endif
 
 #if defined(_CLineB__NEEDS_PREDEFINED_FILENO)
@@ -45,11 +48,27 @@ int removedir(const char* path);
 
 #if defined(_CLineB__NEEDS_WRITE)
 #include <LineCore/size_t.h>
-int removedir(int fileno, const void* buf, size_t nbyte);
+ssize_t write(int fileno, const void* buf, size_t nbyte);
 #endif
 
 #if defined(_CLineB__NEEDS_REMOVE)
 int remove(const char* filename);
+#endif
+
+#if defined(_CLineB__NEEDS_FSIZE)
+#include <LineCore/size_t.h>
+size_t fsize(int fileno);
+#endif
+
+#if defined(_CLineB__NEEDS_READ)
+#include <LineCore/size_t.h>
+ssize_t read(int fileno, void* buf, size_t count);
+#endif
+
+#if defined(_CLineB__NEEDS_LISTDIR)
+#include <LineCore/size_t.h>
+#include <LineKernel/contents_t.h>
+int listdir(const char* path, contents_t* fcontents, size_t count);
 #endif
 
 #undef _CLineB__NEEDS_PREDEFINED_FILENO

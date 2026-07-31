@@ -10,3 +10,11 @@ Use `#if defined(...)` and `#if !defined(...)` instead.
 - errno:
 	- Detailed report
 	- Why the error happened
+
+## Include
+### `src`
+For includes from LineKernel, use `<angles>`
+For includes from CLineB, use `"quotations"`
+
+### `include`
+Use `<angles>` for includes from LineKernel and CLineB.
